@@ -4,78 +4,47 @@ import java.util.Arrays;
 
 public class TestAlgor {
 	public static void main(String[] args) {
-		int[] sz = { 3, 4, 7, 46, 7, 4, 567, 898, 6, 65, 5, 5, 454, 78, 7 };
-		//bubble(sz);
-		//choose(sz);
-		//insert(sz);
-		quick(sz,0,sz.length-1);
+		int[] arrays = { 3, 4, 7, 46, 7, 4, 567, 898, 6, 65, 5, 5, 454, 78, 7 };
+		// bubble(sz);
+		// choose(sz);
+		// insert(sz);
+		// quick(sz,0,sz.length-1);
+		// mergeSort(sz, 0, sz.length - 1);
+		 redix(arrays);
+
+		System.out.println(Arrays.toString(arrays));
 	}
 
-	private static void quick(int[] sz, int L, int R) {
-		int i=L;
-		int j=R;
-		int t=sz[(L+R)/2];
-		while(i<=j){
-			while(sz[i]<t){
-				i++;
-			}
-			while(sz[j]>t){
-				j--;
-			}
-			if(i<=j){
-				int temp = sz[i];
-				sz[i] = sz[j];
-				sz[j] = temp;
-				i++;///error
-				j--;
-			}
-		}
-		if(L<j){
-			quick(sz,L,j);
-		}
-		if(i<R){
-			quick(sz,i,R);
-		}
-		System.out.println(Arrays.toString(sz));
-	}
+	private static void redix(int[] arrays) {
+		int max = findMax(arrays);
+		for (int i = 1; max / i > 0; i *= 10) {
+			int[][] bockets = new int[arrays.length][10];
 
-	private static void insert(int[] sz) {
-		for(int i=1;i<sz.length;i++){
-			int temp = sz[i];
-			while(i>0&&sz[i-1]>temp){
-				sz[i] = sz[i-1];
-				i--;
+			for (int j = 0; j < arrays.length; j++) {
+				int num = (arrays[j] / i) % 10;
+				bockets[j][num] = arrays[j];
 			}
-			sz[i]=temp;
-		}
-		System.out.println(Arrays.toString(sz));
-	}
 
-	private static void choose(int[] sz) {
-		int max = 0;
-		for(int i = 0;i<sz.length-1;i++){
-			max=0;
-			for(int j =0;j<sz.length-i;j++ ){//error:sz.length-i-1
-				if(sz[j]>sz[max])
-					max=j;
-			}
-			int temp=sz[sz.length-i-1];
-			sz[sz.length-i-1]=sz[max];
-			sz[max]=temp;
-		}
-		System.out.println(Arrays.toString(sz));
-	}
-
-	public static void Bubble(int[] sz) {
-		for (int i = 0; i < sz.length - 1; i++) {
-			for (int j = 0; j < sz.length - i-1; j++) {
-				if (sz[j] > sz[j + 1]) {
-					int temp = sz[j];
-					sz[j] = sz[j + 1];
-					sz[j + 1] = temp;
+			int k = 0;
+			for (int l = 0; l < 10; l++) {
+				for (int m = 0; m < arrays.length; m++) {
+					if (bockets[m][l] != 0) {
+						arrays[k++] = bockets[m][l];
+					}
 				}
 			}
+			System.out.println(Arrays.toString(arrays));
 		}
-		System.out.println(Arrays.toString(sz));
 	}
+
+	private static int findMax(int[] sz) {
+		int max = sz[0];
+		for (int i : sz) {
+			if (i > max) {
+				max = i;
+			}
+		}
+		return max;
+	}
+
 }

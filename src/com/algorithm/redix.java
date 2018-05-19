@@ -1,5 +1,7 @@
 package com.algorithm;
-
+/*
+ * 基数排序（桶排序）
+ */
 import java.util.Arrays;
 
 public class redix {
@@ -10,7 +12,9 @@ public class redix {
 	}
 
 	private static void redix(int[] arrays) {
+		//最大数
 		int max = findMax(arrays);
+		//最大数的位数，比如10可以循环2次
 		for (int i = 1; max / i > 0; i *= 10) {
 			int[][] buckets = new int[arrays.length][10];
 
