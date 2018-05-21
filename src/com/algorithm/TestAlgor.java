@@ -10,7 +10,7 @@ public class TestAlgor {
 		// insert(sz);
 		// quick(sz,0,sz.length-1);
 		// mergeSort(sz, 0, sz.length - 1);
-		 redix(arrays);
+		redix(arrays);
 
 		System.out.println(Arrays.toString(arrays));
 	}
@@ -19,21 +19,18 @@ public class TestAlgor {
 		int max = findMax(arrays);
 		for (int i = 1; max / i > 0; i *= 10) {
 			int[][] bockets = new int[arrays.length][10];
-
 			for (int j = 0; j < arrays.length; j++) {
 				int num = (arrays[j] / i) % 10;
 				bockets[j][num] = arrays[j];
 			}
-
 			int k = 0;
-			for (int l = 0; l < 10; l++) {
-				for (int m = 0; m < arrays.length; m++) {
-					if (bockets[m][l] != 0) {
-						arrays[k++] = bockets[m][l];
+			for (int j = 0; j < 10; j++) {
+				for (int l = 0; l < arrays.length; l++) {
+					if(bockets[l][j]!=0){
+						arrays[k++]=bockets[l][j];
 					}
 				}
 			}
-			System.out.println(Arrays.toString(arrays));
 		}
 	}
 

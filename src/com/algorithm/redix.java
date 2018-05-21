@@ -7,6 +7,7 @@ import java.util.Arrays;
 public class redix {
 	public static void main(String[] args) {
 		int[] arrays = { 34, 6, 3, 43, 27, 86, 234, 23, 5687, 5, 34 };
+
 		redix(arrays);
 		System.out.println(Arrays.toString(arrays));
 	}
