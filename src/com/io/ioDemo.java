@@ -22,15 +22,15 @@ public class ioDemo {
 		// file2();
 		// getFile();
 		// get2File();
-		//test();// 获取指定目录下指定后缀文件
+		test();// 获取指定目录下指定后缀文件
 		// int i = 10;
 		// System.out.println(jc(i));//阶乘
-		File file = new File("D:\\eclipse");
+		//File file = new File("D:\\eclipse");
 		//showFileName(file);// 显示D盘文件所有java文件的绝对路径
-		file = new File("D:\\Game\\aaa");
+		//file = new File("D:\\Game\\aaa");
 		//deleteFileName(file);// 删除所有文件和文件夹
 		 //FileWriterDemo();
-		FileReaderDemo();
+		//FileReaderDemo();
 		// FileReaderDemo2();// 读取文件方式2，使用字符数组
 		// copyTest();// 文件复制
 	}
@@ -118,7 +118,6 @@ public class ioDemo {
 				if (e.getName().endsWith(".info"))
 					System.out.println(e.getAbsolutePath());
 			}
-
 	}
 
 	// 4 3 2 1
